@@ -1,4 +1,4 @@
 provider "google" {
-  project     = "home-server"
+  project     = var.project_id
   credentials = var.tf_sa_key
 }
