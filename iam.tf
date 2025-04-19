@@ -10,6 +10,12 @@ resource "google_storage_bucket_iam_member" "truenas_backup_storage_admin" {
   member = "serviceAccount:${google_service_account.truenas_backup.email}"
 }
 
+resource "google_project_iam_member" "truenas_backup_bucket_viewer" {
+  project = var.project_id
+  role    = "roles/storage.bucketViewer"
+  member  = "serviceAccount:${google_service_account.truenas_backup.email}"
+}
+
 resource "google_service_account_key" "truenas_backup_key" {
   service_account_id = google_service_account.truenas_backup.name
 } 
