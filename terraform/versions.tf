@@ -2,7 +2,7 @@ terraform {
   cloud {
     organization = "npcr-home"
     workspaces {
-      name = "iac"
+      name = "home-lab"
     }
   }
 
