@@ -1,66 +1,61 @@
-# Infrastructure as Code (IaC)
+# Home Lab Infrastructure
 
-This repository contains Terraform configurations for managing Google Cloud Platform (GCP) infrastructure.
+This repository contains the infrastructure and configuration code for my personal home lab environment. It includes Terraform configurations for infrastructure provisioning and Docker Compose files for containerized services.
 
-## Overview
+## Hardware Setup
 
-The infrastructure code manages a Google Cloud Storage bucket for backup purposes. The bucket is configured with:
-- Location: NORTHAMERICA-NORTHEAST2
-- Public access prevention: Enabled
-- Force destroy: Enabled (allows bucket deletion even if not empty)
+The home lab runs on a TrueNAS Scale system, which serves as the primary storage and virtualization platform.
 
-## Prerequisites
-
-- Terraform >= 1.0.0
-- Google Cloud Platform account
-- Service account with appropriate permissions
-- Terraform Cloud account (organization: npcr-home)
-
-## Configuration
-
-### Required Variables
-
-- `tf_sa_key`: Service account key for GCP authentication
-
-### Provider Configuration
-
-The code uses the Google Cloud provider (version ~> 4.0) and requires:
-- Project: home-server
-- Service account credentials
-
-## Usage
-
-1. Clone the repository
-2. Set up your Terraform Cloud workspace
-3. Configure the required variables
-4. Initialize Terraform:
-   ```bash
-   terraform init
-   ```
-5. Apply the configuration:
-   ```bash
-   terraform apply
-   ```
+TrueNAS Scale provides:
+- ZFS storage pool management
+- Container orchestration
+- Virtual machine hosting
+- Network file sharing
+- Automated backups
 
 ## Repository Structure
 
-- `buckets.tf`: Defines the Google Cloud Storage bucket
-- `providers.tf`: Configures the Google Cloud provider
-- `variables.tf`: Defines input variables
-- `versions.tf`: Specifies Terraform and provider version requirements
+- `terraform/` - Contains Terraform configurations for infrastructure provisioning
+- `compose/` - Docker Compose files for running containerized services
+- `.github/` - GitHub Actions workflows and configuration
+- `renovate.json` - Renovate bot configuration for automated dependency updates
 
-## Security Notes
+## Prerequisites
 
-- The bucket is configured with public access prevention enabled
-- Service account credentials should be managed securely
-- Never commit sensitive values to version control
+- Terraform
+- Docker and Docker Compose
+- Git
+
+## Getting Started
+
+1. Clone this repository:
+   ```bash
+   git clone https://github.com/yourusername/home-lab.git
+   cd home-lab
+   ```
+
+2. Initialize Terraform:
+   ```bash
+   cd terraform
+   terraform init
+   ```
+
+3. Review and apply Terraform changes:
+   ```bash
+   terraform plan
+   terraform apply
+   ```
+
+4. Start services using Docker Compose:
+   ```bash
+   cd compose
+   docker-compose up -d
+   ```
+
+## Maintenance
+
+This repository uses Renovate bot for automated dependency updates. The configuration can be found in `renovate.json`.
 
 ## Contributing
 
-1. Create a new branch for your changes
-2. Make your modifications
-3. Submit a pull request
-
-## License
-
-[Add your license information here]
+Feel free to submit issues and enhancement requests.
