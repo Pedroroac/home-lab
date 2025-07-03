@@ -5,12 +5,26 @@ services:
     restart: unless-stopped
     tty: true
     stdin_open: true
+    user: "3004:3004"
     ports:
       - "25565:25565"
     environment:
       EULA: "TRUE"
       UID: 3004
       GID: 3004
+      ENABLE_COMMAND_BLOCK: "TRUE"
+      MOTD: "§l§cAshrick's§r Minecraft Server"
+      ALLOW_NETHER: "TRUE"
+      ANNOUNCE_PLAYER_ACHIEVEMENTS: "TRUE"
+      FORCE_GAMEMODE: "TRUE"
+      MODE: "survival" # creative survival adventure spectator
+      GENERATE_STRUCTURES: "TRUE"
+      SNOOPER_ENABLED: "FALSE"
+      VIEW_DISTANCE: "30"
+      SERVER_NAME: "Ashrick's Minecraft Server"
+      EXISTING_OPS_FILE: "MERGE"
+      OPS: |
+        USER1
     volumes:
       # attach the relative directory 'data' to the container's /data path
       - /mnt/DUNE/configs/minecraft:/data
