@@ -12,6 +12,8 @@ services:
       EULA: "TRUE"
       UID: 3004
       GID: 3004
+      INITIAL_MEMORY: "1G"
+      MAX_MEMORY: "4G"
       ENABLE_COMMAND_BLOCK: "TRUE"
       MOTD: "§l§cAshrick's§r Minecraft Server"
       ALLOW_NETHER: "TRUE"
@@ -20,11 +22,22 @@ services:
       MODE: "survival" # creative survival adventure spectator
       GENERATE_STRUCTURES: "TRUE"
       SNOOPER_ENABLED: "FALSE"
-      VIEW_DISTANCE: "30"
+      VIEW_DISTANCE: "10"
       SERVER_NAME: "Ashrick's Minecraft Server"
       EXISTING_OPS_FILE: "MERGE"
       OPS: |
-        USER1
+        Ashrick404
+        Areanthos
     volumes:
       # attach the relative directory 'data' to the container's /data path
       - /mnt/DUNE/configs/minecraft:/data
+    deploy:
+      resources:
+        limits:
+          cpus: '2.0'
+          memory: 4G
+    healthcheck:
+      test: mc-health
+      start_period: 1m
+      interval: 5s
+      retries: 20
