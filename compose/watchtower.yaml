@@ -8,4 +8,9 @@ services:
       TZ: 'America/Toronto'
       WATCHTOWER_NOTIFICATION_URL: ${DISCORD_WEBHOOK}
       WATCHTOWER_NOTIFICATION_TEMPLATE: "{{range .}}{{.Time.Format \"2006-01-02 15:04:05\"}} ({{.Level}}): {{.Message}}{{println}}{{end}}"
-      WATCHTOWER_SCHEDULE: "0 1 * * *"
+      WATCHTOWER_SCHEDULE: "0 0 1 * * * "
+    deploy:
+      resources:
+        limits:
+          cpus: '0.25'
+          memory: 128M

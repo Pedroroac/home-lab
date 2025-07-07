@@ -1,7 +1,7 @@
 services:
   proxy-manager:
     container_name: proxy-manager
-    image: 'jc21/nginx-proxy-manager:latest'
+    image: 'jc21/nginx-proxy-manager:2.12.3'
     restart: unless-stopped
     ports:
       # These ports are in format <host-port>:<container-port>
@@ -18,3 +18,9 @@ services:
       test: ["CMD", "/usr/bin/check-health"]
       interval: 10s
       timeout: 3s
+
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 512M

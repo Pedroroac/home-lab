@@ -40,4 +40,9 @@ services:
       - SYS_TIME
       # Optional, if Pi-hole should get some more processing time
       - SYS_NICE
+    deploy:
+      resources:
+        limits:
+          cpus: '2.0'
+          memory: 2048M
     restart: unless-stopped
