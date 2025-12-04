@@ -9,7 +9,7 @@ resource "google_storage_bucket" "backup-bucket" {
 
   lifecycle_rule {
     action {
-      type = "SetStorageClass"
+      type          = "SetStorageClass"
       storage_class = "ARCHIVE"
     }
     condition {
