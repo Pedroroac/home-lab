@@ -14,6 +14,7 @@ resource "google_storage_bucket" "backup-bucket" {
     }
     condition {
       matches_storage_class = ["STANDARD", "NEARLINE", "COLDLINE"]
+      age = 0
     }
   }
 }
