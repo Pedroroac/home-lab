@@ -17,7 +17,7 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
 
       - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v3
+        uses: hashicorp/setup-terraform@v4
 
       - name: Terraform fmt
         id: fmt
